@@ -56,6 +56,7 @@ function toSQL {
     [String]$R_E_C_N_O_="(SELECT (isNull(MAX(R_E_C_N_O_),0)+1) R_E_C_N_O_ FROM $($SRDTable))"
     [float]$R_E_C_D_E_L_=0
     [float]$RD_VALORBA=0
+    [String]$RD_SEQMV="' '"
 
     #Diferenca Salarial.................................................................................................
     $RD_PD="'116'"
@@ -156,6 +157,8 @@ function toSQL {
     $RD_VALUES+=$R_E_C_D_E_L_
     $RD_VALUES+=","
     $RD_VALUES+=$RD_VALORBA
+    $RD_VALUES+=","
+    $RD_VALUES+=$RD_SEQMV
 
     [String]$Line="INSERT INTO $($SRDTable) ($($RD_FIELDS)) VALUES ($($ExecutionContext.InvokeCommand.ExpandString($RD_VALUES)))"
 
